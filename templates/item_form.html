@@ -1,0 +1,14 @@
+<html>
+  <head></head>
+  <body>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h3>{{ title }}</h3>
+      <!-- enctype added for image/file -->
+      <form method="POST" action="." enctype='multipart/form-data'>{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"/>
+      </form>
+    </div>
+
+  </body>
+</html>

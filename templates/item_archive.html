@@ -1,0 +1,29 @@
+<html>
+  <head></head>
+  <body>
+    <h1>{{ title }}</h1>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Was</th>
+        <th>Erstellt von</th>
+        <th>Erstellt am</th>
+        <th>Gekauft von</th>
+        <th>Gekauft am</th>
+        <th>Reaktivieren</th>
+      </tr>
+    {% for item in object_list %}
+    <tr>
+      <td>{{ item.amount }}</td>
+      <td><a href="{% url 'shoppinglist:detail' id=item.id %}">{{ item.item_name }}</a><td>
+      <td>{{ item.created_by }}</td>
+      <td>{{ item.created }}</td>
+      <td>{{ item.finalized_by }}</td>
+      <td>{{ item.finalized }}</td>
+      <td><a href="{% url 'shoppinglist:reactivate' id=item.id %}">X</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'shoppinglist:home' %}">to list</a>
+  </body>
+</html>

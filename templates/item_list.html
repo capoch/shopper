@@ -1,0 +1,22 @@
+<html>
+  <head></head>
+  <body>
+    <h1>{{ title }} <a href="{% url 'shoppinglist:create' %}"<>+</a></h1>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Was</th>
+        <th>Bis Wann</th>
+      </tr>
+    {% for item in object_list %}
+    <tr>
+      <td>{{ item.amount }}</td>
+      <td><a href="{% url 'shoppinglist:detail' id=item.id %}">{{ item.item_name }}</a><td>
+      <td>{% if item.due_date %}{{ item.due_date }}{% endif %}</td>
+      <td><a href="{% url 'shoppinglist:buy' id=item.id %}">X</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'shoppinglist:archive' %}">to archive</a>
+  </body>
+</html>

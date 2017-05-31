@@ -1,0 +1,22 @@
+<h1>{{ title }}</h1><small><a href="{% url 'shoppinglist:edit' id=item.id %}">Edit</a></small>
+    {% if item.image %}
+    <img src="{{ item.image.url }}" />
+    {% endif %}
+
+    <h3>{{ item.amount }} {{ item.item_name }} ({{ item.description }}){% if item.due_date %}(kaufen bis: {{ item.due_date}}){% endif %}</h3>
+    <p>Erfasst von: {{ item.created_by }} am {{ item.created }}</p>
+    {% if item.updated_by %}
+    <p>Zuletzt geändert von: {{ item.updated_by }} am {{ item.updated }}</p>
+    {% endif %}
+    {% if item.finalized_by %}
+    <p>Gekauft: von {{ item.finalized_by }} am {{ item.finalized}}</p>
+    {% endif %}
+
+    <a href="{% url 'shoppinglist:home'%}">to List</a>
+
+    <style>
+      img.resize {
+        width:200px;
+        height:40px;
+      }
+    </style>
