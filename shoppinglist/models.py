@@ -20,7 +20,7 @@ class Item(models.Model):
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="updated_user",null=True, blank=True)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    created_by = models.ForeignKey('auth.User', related_name='items', on_delete=models.CASCADE)
     due_date = models.DateField(null=True, blank=True)
     finalized = models.DateTimeField(null=True, blank=True)
     finalized_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="finalized_user", null=True, blank=True)

@@ -21,7 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include("shoppinglist.urls", namespace="shoppinglist")),
-    url(r'^api/items/', include("shoppinglist.api.urls", namespace="api")),
+    url(r'^api/', include("shoppinglist.api.urls", namespace="api")),
 
 ]
 

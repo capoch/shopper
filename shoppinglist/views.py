@@ -36,8 +36,11 @@ def item_create(request):
 def item_list(request):
     today = timezone.now().date()
     queryset1 = Item.objects.filter(pending=True, private=False)
-    queryset2 = Item.objects.filter(pending=True, private=True, created_by=request.user)
-    queryset = queryset1 | queryset2
+    if request.user:
+        queryset2 = Item.objects.filter(pending=True, private=True, created_by=request.user)
+        queryset = queryset1 | queryset2
+    else:
+        queryset = queryset1
     context = {
         "title":"Shopping List",
         "object_list": queryset,
